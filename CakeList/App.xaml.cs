@@ -1,28 +1,25 @@
-﻿using System;
+﻿using CakeList.Interfaces;
+using CakeList.Services;
+using CommonServiceLocator;
+using Unity;
+using Unity.ServiceLocation;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace CakeList
 {
-    public partial class App : Application
+    public partial class App
     {
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
-        }
+            UnityContainer u = new UnityContainer();
+            u.RegisterType<INetworkHelper, NetworkHelper>();
+            u.RegisterType<IDownloadCakeList, DownloadCakeList>();
+            ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(u));
 
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            //// Todo
+            //// Add mainpage initialization
         }
     }
 }
