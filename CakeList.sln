@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeList", "CakeList\CakeLi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{55826B06-6866-4475-B077-5B1B13BF19E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeList.UnitTest", "CakeList.UnitTest\CakeList.UnitTest.csproj", "{3B027ABC-57E3-440A-9013-A2DEB5428D06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +29,16 @@ Global
 		{BD3DDF37-6B7C-4E4B-9CA9-D7853C69E9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD3DDF37-6B7C-4E4B-9CA9-D7853C69E9F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BD3DDF37-6B7C-4E4B-9CA9-D7853C69E9F4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3B027ABC-57E3-440A-9013-A2DEB5428D06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B027ABC-57E3-440A-9013-A2DEB5428D06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B027ABC-57E3-440A-9013-A2DEB5428D06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B027ABC-57E3-440A-9013-A2DEB5428D06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3B027ABC-57E3-440A-9013-A2DEB5428D06} = {55826B06-6866-4475-B077-5B1B13BF19E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B58CCC64-281C-4ADD-9A43-529E339BF6EC}
