@@ -2,10 +2,15 @@
 
 namespace CakeList.Services
 {
+    /// <summary>
+    /// Network status manager class
+    /// </summary>
     public class NetworkStatusMessage
     {
-        ////Todo
-        /// Add annotations 
+        /// <param name="networkStatus">NetworkAccess</param>
+        /// <param name="networkMessage"></param>
+        /// <returns><c>networkMessage</c></returns>
+        /// <returns><c>true</c> if the network <c>NetworkAccess</c> is equal to <c>NetworkAccess.Internet</c>; otherwise, <c>false></c></returns>
         public bool Get(NetworkAccess networkStatus, out string networkMessage)
         {
             string errorSuffixMessage = @", please check your connection and try again";
