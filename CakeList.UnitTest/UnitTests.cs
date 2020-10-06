@@ -1,17 +1,28 @@
-﻿using System;
+﻿using CommonServiceLocator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
+using Unity;
+using Unity.ServiceLocation;
+using Xamarin.Essentials;
+using CakeList.Interfaces;
+using CakeList.Models;
+using CakeList.Services;
+
 
 namespace CakeList.UnitTest
 {
-    ////Todo
-    /// Add test units
-    /// 1) Load Sort
-    /// 2) Load Sort / Duplicates Removed
-    /// 3) List Load Success
-    /// 4) List Load Fails
     [TestClass]
     public class UnitTests
     {
+        private readonly UnityContainer _unityContainer = new UnityContainer();
+
+        [TestInitialize]
+        public void Init()
+        {
+            ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(_unityContainer));
+        }
+
         [TestMethod]
         public void Cake_List_Sorted()
         {
