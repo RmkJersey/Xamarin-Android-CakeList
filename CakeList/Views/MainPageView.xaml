@@ -32,32 +32,17 @@
             <CollectionView ItemsSource="{Binding CakeList}"
                     SelectionMode="Single"
                     SelectionChanged="CakeViewList_OnSelectionChanged"
-                    Margin="8" 
-                    BackgroundColor="#ddf0fd">
+                    Margin="8">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="18" Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Margin="0" 
+                        <Frame Margin="2" 
                                Padding="0"
                                CornerRadius="10"
                                BorderColor="DarkGray" 
                                IsClippedToBounds="True">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup Name="CommonStates">
-                                    <VisualState Name="Normal" >
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="LightBlue" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                    <VisualState Name="Selected">
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="White" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="115" />
@@ -95,12 +80,9 @@
                 Grid.Row="2" 
                 Grid.Column="0"
                 Grid.ColumnSpan="2" 
-                Text="Refresh Cake List" 
-                TextColor="White"
-                BackgroundColor="#2793d8"
-                FontSize="Medium"
-                FontAttributes="Bold"
-                Clicked="RefreshButton_OnClicked">
+                Text="Refresh Cake List"
+                Clicked="RefreshButton_OnClicked"
+                Visual="Material">
         </Button>
 
         <RelativeLayout IsVisible="{Binding StatusMessageVisible}" 

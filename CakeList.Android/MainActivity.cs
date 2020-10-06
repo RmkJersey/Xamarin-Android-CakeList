@@ -27,6 +27,7 @@ namespace CakeList.Droid
 
             Platform.Init(this, savedInstanceState);
             Forms.Init(this, savedInstanceState);
+            FormsMaterial.Init(this, savedInstanceState);
 
             LoadApplication(new App());
         }

@@ -35,15 +35,15 @@ namespace CakeList.Behaviors
                 return;
 
             frame.Opacity = 0;
-            frame.TranslationY = 200;
+            frame.TranslationY = 300;
 
             Device.BeginInvokeOnMainThread(async () =>
             {
                 try
                 {
                     await Task.WhenAll(
-                        frame.FadeTo(1, 500, Easing.Linear),
-                        frame.TranslateTo(0, 0, 800, Easing.SpringOut)
+                        frame.FadeTo(1, 600, Easing.Linear),
+                        frame.TranslateTo(0, 0, 700, Easing.SpringOut)
                     );
                 }
                 finally
