@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Behaviours\" />
     <Folder Include="Services\" />
     <Folder Include="Views\" />
