@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CakeList.Views.MainPageView"  
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:behavior="clr-namespace:CakeList.Behaviors">
+
+    <Grid BackgroundColor="#ddf0fd">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Image x:Name="WaracleLogo" 
+               Source="wLogo"
+               Grid.Row="0" 
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               BackgroundColor="Black"/>
+
+        <RefreshView 
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            Command="{Binding RefreshCommand}">
+            <CollectionView ItemsSource="{Binding CakeList}"
+                    SelectionMode="Single"
+                    SelectionChanged="CakeViewList_OnSelectionChanged"
+                    Margin="8" 
+                    BackgroundColor="#ddf0fd">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="18" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0" 
+                               Padding="0"
+                               CornerRadius="10"
+                               BorderColor="DarkGray" 
+                               IsClippedToBounds="True">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" >
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="LightBlue" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <ffimageloading:CachedImage 
+                                   Source="{Binding Image}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="115"
+                                   WidthRequest="115"
+                                   LoadingPlaceholder="defaultPlaceholder"
+                                   DownsampleToViewSize="true"
+                                   RetryCount="0"/>
+                                <Label
+                                    Text="{Binding Title}"
+                                    Grid.Column="1" 
+                                    Padding="15"
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </Grid>
+                            <Frame.Behaviors>
+                                <behavior:AnimateFrameBoucnceBehaviour/>
+                            </Frame.Behaviors>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <Button x:Name="RefreshButton"
+                Command="{Binding RefreshCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="2" 
+                Grid.Column="0"
+                Grid.ColumnSpan="2" 
+                Text="Refresh Cake List" 
+                TextColor="White"
+                BackgroundColor="#2793d8"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                Clicked="RefreshButton_OnClicked">
+        </Button>
+
+        <RelativeLayout IsVisible="{Binding StatusMessageVisible}" 
+                        Grid.Row="0" 
+                        Grid.RowSpan="3" 
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="2" 
+                        HorizontalOptions="CenterAndExpand" 
+                        VerticalOptions="CenterAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="NetWork Error"
+                   TextColor="Red"
+                   FontSize="Large"
+                   VerticalTextAlignment="Center" 
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold">
+                </Label>
+                <Label Grid.Row="1" Text="{Binding StatusMessage}"
+                   TextColor="#2793d8" 
+                   BackgroundColor="#ddf0fd" 
+                   FontSize="Medium"
+                   Margin="20,0"
+                   VerticalTextAlignment="Center" 
+                   HorizontalTextAlignment="Center">
+                </Label>
+            </Grid>
+        </RelativeLayout>
+    </Grid>
+</ContentPage>

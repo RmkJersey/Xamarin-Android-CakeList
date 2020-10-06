@@ -1,5 +1,6 @@
 ﻿using CakeList.Interfaces;
 using CakeList.Services;
+using CakeList.Views;
 using CommonServiceLocator;
 using Unity;
 using Unity.ServiceLocation;
@@ -18,8 +19,7 @@ namespace CakeList
             u.RegisterType<IDownloadCakeList, DownloadCakeList>();
             ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(u));
 
-            //// Todo
-            //// Add mainpage initialization
+            MainPage = new NavigationPage(new MainPageView());
         }
     }
 }
